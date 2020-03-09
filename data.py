@@ -25,9 +25,9 @@ def image_loader(image_name,shape=572):
 	image = img.resize((shape,shape))
 	image = loader(image).unsqueeze(0)
 	image=image.to('cuda', torch.float32)
-	if image.shape[1]>1:
-		image=image[:,0,:,:]
-		image=torch.reshape(image,(1,1,shape,shape))
+	# if image.shape[1]>1:
+		# image=image[:,0,:,:]
+	image=torch.reshape(image,(1,image.shape[1],shape,shape))
 	return image
 
 def load_data(path,batch,batch_size,if_train):
